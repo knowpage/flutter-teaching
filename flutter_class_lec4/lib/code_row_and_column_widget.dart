@@ -179,7 +179,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Expanded Example',
+      title: 'Row and Column Example',
       home: MyHomePage(),
     );
   }
@@ -190,97 +190,101 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Expanded Example'),
+        title: Text('Row and Column Example'),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildRowWithoutExpanded(),
+            _buildRowExamples(),
             SizedBox(height: 20),
-            _buildRowWithExpanded(),
-            SizedBox(height: 20),
-            _buildColumnWithoutExpanded(),
-            SizedBox(height: 20),
-            _buildColumnWithExpanded(),
+            _buildColumnExamples(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildRowWithoutExpanded() {
+  Widget _buildRowExamples() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Row without Expanded', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text('Row Examples', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         SizedBox(height: 10),
-        Row(
-          children: [
-            _buildContainer(Colors.blue, 80),
-            _buildContainer(Colors.green, 120),
-            _buildContainer(Colors.orange, 100),
-          ],
-        ),
+        Text('MainAxisAlignment.start', style: TextStyle(fontSize: 16)),
+        _buildRow(MainAxisAlignment.start, Colors.blue),
+        SizedBox(height: 10),
+        Text('MainAxisAlignment.center', style: TextStyle(fontSize: 16)),
+        _buildRow(MainAxisAlignment.center, Colors.green),
+        SizedBox(height: 10),
+        Text('MainAxisAlignment.end', style: TextStyle(fontSize: 16)),
+        _buildRow(MainAxisAlignment.end, Colors.orange),
+        SizedBox(height: 10),
+        Text('MainAxisAlignment.spaceBetween', style: TextStyle(fontSize: 16)),
+        _buildRow(MainAxisAlignment.spaceBetween, Colors.purple),
+        SizedBox(height: 10),
+        Text('MainAxisAlignment.spaceAround', style: TextStyle(fontSize: 16)),
+        _buildRow(MainAxisAlignment.spaceAround, Colors.teal),
+        SizedBox(height: 10),
+        Text('MainAxisAlignment.spaceEvenly', style: TextStyle(fontSize: 16)),
+        _buildRow(MainAxisAlignment.spaceEvenly, Colors.red),
       ],
     );
   }
 
-  Widget _buildRowWithExpanded() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _buildRow(MainAxisAlignment alignment, Color color) {
+    return Row(
+      mainAxisAlignment: alignment,
       children: [
-        Text('Row with Expanded', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-        SizedBox(height: 10),
-        Row(
-          children: [
-            Expanded(child: _buildContainer(Colors.blue, 80)),
-            Expanded(child: _buildContainer(Colors.green, 120)),
-            Expanded(child: _buildContainer(Colors.orange, 100)),
-          ],
-        ),
+        _buildContainer(color),
+        _buildContainer(color),
+        _buildContainer(color),
       ],
     );
   }
 
-  Widget _buildColumnWithoutExpanded() {
+  Widget _buildColumnExamples() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Column without Expanded', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text('Column Examples', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         SizedBox(height: 10),
-        Column(
-          children: [
-            _buildContainer(Colors.blue, 80),
-            _buildContainer(Colors.green, 120),
-            _buildContainer(Colors.orange, 100),
-          ],
-        ),
+        Text('MainAxisAlignment.start', style: TextStyle(fontSize: 16)),
+        _buildColumn(MainAxisAlignment.start, Colors.blue),
+        SizedBox(height: 10),
+        Text('MainAxisAlignment.center', style: TextStyle(fontSize: 16)),
+        _buildColumn(MainAxisAlignment.center, Colors.green),
+        SizedBox(height: 10),
+        Text('MainAxisAlignment.end', style: TextStyle(fontSize: 16)),
+        _buildColumn(MainAxisAlignment.end, Colors.orange),
+        SizedBox(height: 10),
+        Text('MainAxisAlignment.spaceBetween', style: TextStyle(fontSize: 16)),
+        _buildColumn(MainAxisAlignment.spaceBetween, Colors.purple),
+        SizedBox(height: 10),
+        Text('MainAxisAlignment.spaceAround', style: TextStyle(fontSize: 16)),
+        _buildColumn(MainAxisAlignment.spaceAround, Colors.teal),
+        SizedBox(height: 10),
+        Text('MainAxisAlignment.spaceEvenly', style: TextStyle(fontSize: 16)),
+        _buildColumn(MainAxisAlignment.spaceEvenly, Colors.red),
       ],
     );
   }
 
-  Widget _buildColumnWithExpanded() {
+  Widget _buildColumn(MainAxisAlignment alignment, Color color) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: alignment,
       children: [
-        Text('Column with Expanded', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-        SizedBox(height: 10),
-        Column(
-          children: [
-            Expanded(child: _buildContainer(Colors.blue, 80)),
-            Expanded(child: _buildContainer(Colors.green, 120)),
-            Expanded(child: _buildContainer(Colors.orange, 100)),
-          ],
-        ),
+        _buildContainer(color),
+        _buildContainer(color),
+        _buildContainer(color),
       ],
     );
   }
 
-  Widget _buildContainer(Color color, double height) {
+  Widget _buildContainer(Color color) {
     return Container(
-      width: double.infinity,
-      height: height,
+      width: 80,
+      height: 80,
       color: color,
       margin: EdgeInsets.all(8),
     );
