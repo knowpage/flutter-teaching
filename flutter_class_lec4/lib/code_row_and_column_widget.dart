@@ -198,6 +198,7 @@ class MyHomePage extends StatelessWidget {
           children: [
             _buildRowExamples(),
             SizedBox(height: 20),
+            Icon(Icons.ac_unit_sharp)
             _buildColumnExamples(),
           ],
         ),
